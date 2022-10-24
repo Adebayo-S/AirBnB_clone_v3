@@ -3,7 +3,7 @@
     index.py file in v1/views
 """
 from api.v1.views import app_views
-from flask import Flask, jsonify
+from flask import jsonify
 
 
 @app_views.route("/status")
