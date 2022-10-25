@@ -27,13 +27,13 @@ def handle_states():
         return jsonify(new_state.to_dict()), 201
 
 
-@app_views.route("/states/<string:state_id>", methods=["GET", "PUT", "DELETE"],
+@app_views.route("/states/<state_id>", methods=["GET", "PUT", "DELETE"],
                  strict_slashes=False)
 def handle_state_by_id(state_id):
     """
         Method to return a JSON representation of a state
     """
-    state_by_id = storage.get("State", state_id)
+    state_by_id = storage.get(State, state_id)
     if state_by_id is None:
         abort(404)
     elif request.method == 'GET':
