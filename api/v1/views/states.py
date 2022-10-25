@@ -44,9 +44,9 @@ def get_state_by_id(state_id):
     elif request.method == 'PUT':
         put = request.get_json()
         if put is None or type(put) != dict:
-            return jsonify({'error': 'Not a JSON'}), 400
+            return jsonify({'message': 'Not a JSON'}), 400
         for key, value in put.items():
             if key not in ['id', 'created_at', 'updated_at']:
                 setattr(state_by_id, key, value)
-                storage.save()
+        storage.save()
         return jsonify(state_by_id.to_dict()), 200
