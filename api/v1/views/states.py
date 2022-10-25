@@ -8,8 +8,8 @@ from models import storage
 from models.state import State
 
 
-@app_views.route("/states", methods=["GET", "POST"])
-def get_states():
+@app_views.route("/states", methods=["GET", "POST"], strict_slashes=False)
+def handle_states():
     """
         Method to return a JSON representation of all states
     """
@@ -27,8 +27,9 @@ def get_states():
         return jsonify(new_state.to_dict()), 201
 
 
-@app_views.route("/states/<string:state_id>", methods=["GET", "PUT", "DELETE"])
-def get_state_by_id(state_id):
+@app_views.route("/states/<string:state_id>", methods=["GET", "PUT", "DELETE"],
+                 strict_slashes=False)
+def handle_state_by_id(state_id):
     """
         Method to return a JSON representation of a state
     """
