@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""app.py to connect to API"""
+"""
+    app.py to connect to API. app entry point
+"""
 
 import os
 from models import storage
@@ -13,7 +15,9 @@ app.register_blueprint(app_views)
 
 @app.teardown_appcontext
 def teardown(code):
-    """teardown_appcontext"""
+    """
+    teardown_appcontext method that closes the storage
+    """
     storage.close()
 
 
