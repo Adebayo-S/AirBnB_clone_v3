@@ -19,8 +19,11 @@ def handle_cities(state_id):
         abort(404, 'Not found')
 
     if request.method == 'GET':
-        return jsonify([val.to_dict() for val in storage.all('City')
-                        .values() if val.state_id == state_id])
+        city_list = []
+        for city in state_by_id.cities:
+            city_list.append(city.to_dict())
+        return jsonify(city_list)
+
     elif request.method == 'POST':
         post = request.get_json()
         if post is None or type(post) != dict:
