@@ -10,7 +10,7 @@ from models.review import Review
 from models.user import User
 
 
-@app_views.route("/reviews/<place_id>/reviews", methods=["GET", "POST"], strict_slashes=False)
+@app_views.route("/places/<place_id>/reviews", methods=["GET", "POST"], strict_slashes=False)
 def handle_reviews(place_id):
     """
         Method to return a JSON representation of all states
