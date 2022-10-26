@@ -14,6 +14,10 @@ def handle_cities(state_id):
     """
         Method to return a JSON representation of cities by state
     """
+    state_by_id = storage.get(State, state_id)
+    if state_by_id is None:
+        abort(404, 'Not found')
+
     if request.method == 'GET':
         return jsonify([val.to_dict() for val in storage.all('City')
                         .values() if val.state_id == state_id])
