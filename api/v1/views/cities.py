@@ -16,7 +16,7 @@ def handle_cities(state_id):
     """
     if request.method == 'GET':
         return jsonify([val.to_dict() for val in storage.all('City')
-                        .values()])
+                        .values() if val.state_id == state_id])
     elif request.method == 'POST':
         post = request.get_json()
         if post is None or type(post) != dict:
@@ -35,7 +35,7 @@ def handle_cities(state_id):
 
 @app_views.route("/cities/<city_id>", methods=["GET", "PUT", "DELETE"],
                  strict_slashes=False)
-def handle_state_by_id(city_id):
+def handle_cities_by_id(city_id):
     """
         Method to return a JSON representation of a city
     """
